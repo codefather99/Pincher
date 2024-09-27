@@ -19,7 +19,7 @@ const Header = () => {
 const dispatch = useDispatch();
 const navigate = useNavigate();
 
-const [logoutApiCall] = useLogoutMutation();
+const [logoutApiCall, refetch] = useLogoutMutation();
 
   const logoutHandler = async () => {
     try {
@@ -27,6 +27,7 @@ const [logoutApiCall] = useLogoutMutation();
       dispatch(logout());
       dispatch(resetCart());
       navigate('/login');
+      refetch()
     } catch (err) {
       console.log(err);
     }
